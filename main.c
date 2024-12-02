@@ -87,6 +87,8 @@ int main(int argc, char *argv[]) {
         fprintf(output_file, "%d ", selection_sorted_a[i]);
     }
 
+    printf("Data was written to data.txt\n");
+
     printf("Sorted by selection_sort in %d operations\n", count_selection);
     printf("Sorted by quick_sort in %d operations\n", count_quick);
 
