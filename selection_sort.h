@@ -1,1 +1,1 @@
-void selection_sort(int *a, int n);
+int selection_sort(int *a, int n);

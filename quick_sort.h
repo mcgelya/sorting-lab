@@ -1,3 +1,3 @@
-void quick_sort_recursive(int *a, int l, int r);
+void quick_sort_recursive(int *a, int l, int r, int *count);
 
-void quick_sort(int *a, int n);
+int quick_sort(int *a, int n);

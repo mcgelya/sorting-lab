@@ -79,24 +79,16 @@ int main(int argc, char *argv[]) {
         quick_sorted_a[i] = a[i];
     }
 
-    clock_t start_selection = clock();
-    selection_sort(selection_sorted_a, n);
-    clock_t end_selection = clock();
-
-    clock_t start_quick = clock();
-    quick_sort(quick_sorted_a, n);
-    clock_t end_quick = clock();
+    int count_selection = selection_sort(selection_sorted_a, n);
+    int count_quick = quick_sort(quick_sorted_a, n);
 
     for (int i = 0; i < n; ++i) {
         assert(selection_sorted_a[i] == quick_sorted_a[i]);  // Убедимся, что отсортировали правильно
         fprintf(output_file, "%d ", selection_sorted_a[i]);
     }
 
-    double elapsed_selection = (double)(end_selection - start_selection) / CLOCKS_PER_SEC;
-    double elapsed_quick = (double)(end_quick - start_quick) / CLOCKS_PER_SEC;
-
-    printf("Sorted by selection_sort in %.6f seconds\n", elapsed_selection);
-    printf("Sorted by quick_sort in %.6f seconds\n", elapsed_quick);
+    printf("Sorted by selection_sort in %d operations\n", count_selection);
+    printf("Sorted by quick_sort in %d operations\n", count_quick);
 
     free(a);
     free(selection_sorted_a);
