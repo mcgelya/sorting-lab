@@ -1,14 +1,13 @@
-#include <assert.h>
+#include <assert.h>  // для assert если условие не выпоняется то выдает ошибку
 #include <stdio.h>
-#include <string.h>
+#include <string.h>  // для strcmp
 #include <stdlib.h>
-#include <time.h>
 
 #include "queue.h"
 #include "quick_sort.h"
 #include "selection_sort.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {  // argc-количество аргументов argv-сами аргументы
     int n;
     int *a = NULL;
     if (argc > 1 && strcmp(argv[1], "--file") == 0) {
@@ -16,19 +15,19 @@ int main(int argc, char *argv[]) {
             printf("Provide filename when using with --file\n");
             return 0;
         }
-        FILE *input_file = fopen(argv[2], "r");
+        FILE *input_file = fopen(argv[2], "r");  // открываем data.txt на чтение
         if (input_file == NULL) {
             printf("Cannot open provided file\n");
             return 0;
         }
-        fscanf(input_file, "%d", &n);
-        a = malloc(sizeof(int) * n);
+        fscanf(input_file, "%d", &n);  // из файла
+        a = malloc(sizeof(int) * n);   // создаем массив
         for (int i = 0; i < n; ++i) {
-            fscanf(input_file, "%d", &a[i]);
+            fscanf(input_file, "%d", &a[i]);  // вводим
         }
-        int *sorted_a = malloc(sizeof(int) * n);
+        int *sorted_a = malloc(sizeof(int) * n);  // отсортированный массив
         for (int i = 0; i < n; ++i) {
-            fscanf(input_file, "%d", &sorted_a[i]);
+            fscanf(input_file, "%d", &sorted_a[i]);  // заполняем отсортированнный массив
         }
         printf("Source data:\n");
         for (int i = 0; i < n; ++i) {
@@ -41,14 +40,14 @@ int main(int argc, char *argv[]) {
         printf("\n");
         free(a);
         free(sorted_a);
-        fclose(input_file);
+        fclose(input_file);  // закрыть файл
         return 0;
     }
 
     scanf("%d", &n);
     a = malloc(sizeof(int) * n);
     for (int i = 0; i < n; ++i) {
-        scanf("%d", &a[i]);
+        scanf("%d", &a[i]);  // заполнили массив
     }
 
     // Построим очередь

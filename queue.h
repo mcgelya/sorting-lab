@@ -1,12 +1,12 @@
-struct QueueNode {
-    struct QueueNode *next;
-    int val;
+struct QueueNode {           // элемент очереди
+    struct QueueNode *next;  // элемент после
+    int val;                 // значение
 };
 
-struct Queue {
-    struct QueueNode *front, *back;
+struct Queue {                       // сама очередь
+    struct QueueNode *front, *back;  // первый и послдений элемент
 };
 
-void push(struct Queue *q, int x);
-void pop(struct Queue *q);
-int top(struct Queue *q);
+void push(struct Queue *q, int x);  // в конец
+void pop(struct Queue *q);          // удалить из начала
+int top(struct Queue *q);           // первый элемент

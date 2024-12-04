@@ -1,8 +1,8 @@
-void quick_sort_recursive(int *a, int l, int r, int *count) {
-    if (l >= r) {
+void quick_sort_recursive(int *a, int l, int r, int *count) {  // указатель на каунт чтобы меянть
+    if (l >= r) {  // позиция l начало подотрезка r конец подотрезка
         return;
     }
-    int pivot = a[(l + r) / 2];
+    int pivot = a[(l + r) / 2];  // опорный элемент
     int i = l, j = r;
     while (i <= j) {
         ++(*count);
@@ -23,8 +23,8 @@ void quick_sort_recursive(int *a, int l, int r, int *count) {
         ++i;
         --j;
     }
-    quick_sort_recursive(a, l, j, count);
-    quick_sort_recursive(a, j + 1, r, count);
+    quick_sort_recursive(a, l, j, count);      // левая часть
+    quick_sort_recursive(a, j + 1, r, count);  // правая часть
 }
 
 int quick_sort(int *a, int n) {
