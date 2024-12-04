@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "queue.h"
 #include "quick_sort.h"
@@ -78,18 +79,26 @@ int main(int argc, char *argv[]) {  // argc-количество аргумен�
         quick_sorted_a[i] = a[i];
     }
 
+    clock_t start_selection = clock();
     int count_selection = selection_sort(selection_sorted_a, n);
+    clock_t end_selection = clock();
+    clock_t start_quick = clock();
     int count_quick = quick_sort(quick_sorted_a, n);
+    clock_t end_quick = clock();
 
     for (int i = 0; i < n; ++i) {
         assert(selection_sorted_a[i] == quick_sorted_a[i]);
         fprintf(output_file, "%d ", selection_sorted_a[i]);
     }
 
-    printf("Data was written to data.txt\n");
-
+    double elapsed_selection = (double)(end_selection - start_selection) / CLOCKS_PER_SEC;
+    double elapsed_quick = (double)(end_quick - start_quick) / CLOCKS_PER_SEC;
+    printf("Sorted by selection_sort in %.6f seconds\n", elapsed_selection);
+    printf("Sorted by quick_sort in %.6f seconds\n", elapsed_quick);
     printf("Sorted by selection_sort in %d operations\n", count_selection);
     printf("Sorted by quick_sort in %d operations\n", count_quick);
+
+    printf("Data was written to data.txt\n");
 
     free(a);
     free(selection_sorted_a);
