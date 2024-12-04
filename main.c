@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {  // argc-количество аргумен�
     q->back = NULL;
     q->front = NULL;
     for (int i = 0; i < n; ++i) {
-        push(q, a[i]);
+        push(q, a[i]);  // заполняем очередь через конец
     }
     // Очистим очередь
     for (int i = 0; i < n; ++i) {
@@ -64,9 +64,9 @@ int main(int argc, char *argv[]) {  // argc-количество аргумен�
     }
 
     // Запишем в файл
-    FILE *output_file = fopen("data.txt", "w");
-    fprintf(output_file, "%d\n", n);
-    for (int i = 0; i < n; ++i) {
+    FILE *output_file = fopen("data.txt", "w");  // открываем на запись
+    fprintf(output_file, "%d\n", n);             // кол-во элементов
+    for (int i = 0; i < n; ++i) {                // массив
         fprintf(output_file, "%d ", a[i]);
     }
     fprintf(output_file, "\n");
