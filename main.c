@@ -1,6 +1,6 @@
-#include <assert.h>  // для assert если условие не выпоняется то выдает ошибку
+#include <assert.h>
 #include <stdio.h>
-#include <string.h>  // для strcmp
+#include <string.h>
 #include <stdlib.h>
 
 #include "queue.h"
@@ -15,19 +15,19 @@ int main(int argc, char *argv[]) {  // argc-количество аргумен�
             printf("Provide filename when using with --file\n");
             return 0;
         }
-        FILE *input_file = fopen(argv[2], "r");  // открываем data.txt на чтение
+        FILE *input_file = fopen(argv[2], "r");
         if (input_file == NULL) {
             printf("Cannot open provided file\n");
             return 0;
         }
-        fscanf(input_file, "%d", &n);  // из файла
-        a = malloc(sizeof(int) * n);   // создаем массив
+        fscanf(input_file, "%d", &n);
+        a = malloc(sizeof(int) * n);
         for (int i = 0; i < n; ++i) {
-            fscanf(input_file, "%d", &a[i]);  // вводим
+            fscanf(input_file, "%d", &a[i]);
         }
-        int *sorted_a = malloc(sizeof(int) * n);  // отсортированный массив
+        int *sorted_a = malloc(sizeof(int) * n);
         for (int i = 0; i < n; ++i) {
-            fscanf(input_file, "%d", &sorted_a[i]);  // заполняем отсортированнный массив
+            fscanf(input_file, "%d", &sorted_a[i]);
         }
         printf("Source data:\n");
         for (int i = 0; i < n; ++i) {
@@ -40,33 +40,33 @@ int main(int argc, char *argv[]) {  // argc-количество аргумен�
         printf("\n");
         free(a);
         free(sorted_a);
-        fclose(input_file);  // закрыть файл
+        fclose(input_file);
         return 0;
     }
-
+    printf("Enter the number of numbers: ");
     scanf("%d", &n);
+    printf("Enter your numbers: ");
     a = malloc(sizeof(int) * n);
     for (int i = 0; i < n; ++i) {
-        scanf("%d", &a[i]);  // заполнили массив
+        scanf("%d", &a[i]);
     }
 
-    // Построим очередь
     struct Queue *q = malloc(sizeof(struct Queue));
     q->back = NULL;
     q->front = NULL;
     for (int i = 0; i < n; ++i) {
-        push(q, a[i]);  // заполняем очередь через конец
+        push(q, a[i]);
     }
     // Очистим очередь
     for (int i = 0; i < n; ++i) {
-        assert(top(q) == a[i]);  // Убедимся, что построили очередь верно
+        assert(top(q) == a[i]);
         pop(q);
     }
 
     // Запишем в файл
-    FILE *output_file = fopen("data.txt", "w");  // открываем на запись
-    fprintf(output_file, "%d\n", n);             // кол-во элементов
-    for (int i = 0; i < n; ++i) {                // массив
+    FILE *output_file = fopen("data.txt", "w");
+    fprintf(output_file, "%d\n", n);
+    for (int i = 0; i < n; ++i) {
         fprintf(output_file, "%d ", a[i]);
     }
     fprintf(output_file, "\n");
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {  // argc-количество аргумен�
     int count_quick = quick_sort(quick_sorted_a, n);
 
     for (int i = 0; i < n; ++i) {
-        assert(selection_sorted_a[i] == quick_sorted_a[i]);  // Убедимся, что отсортировали правильно
+        assert(selection_sorted_a[i] == quick_sorted_a[i]);
         fprintf(output_file, "%d ", selection_sorted_a[i]);
     }
 
